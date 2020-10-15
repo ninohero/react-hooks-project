@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+const initialFormState = {
+  username: '',
+  email: '',
+  password: ''
+};
+
 const Register = () => {
-  const [form, setForm] = useState({
-    username: '',
-    email: '',
-    password: ''
-  })
+  const [form, setForm] = useState(initialFormState)
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -21,7 +23,8 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUser(form)
+    setUser(form);
+    setForm(initialFormState);
   }
 
   return (
@@ -39,16 +42,19 @@ const Register = () => {
           placeholder="Username"
           name="username"
           onChange={handleChange}
+          value={form.username}
         />
         <input type="email"
           placeholder="Email Address"
           name="email"
           onChange={handleChange}
+          value={form.email}
         />
         <input type="password"
           placeholder="Password"
           name="password"
           onChange={handleChange}
+          value={form.password}
         />
         <button type="submit">Submit</button>
       </form>
